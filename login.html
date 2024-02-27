@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form {
+            margin-top: 5em;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 20%;
+        }
+
+        #p{
+          width:14.5em;
+          color:#565656;
+          font-size: 1.2em;
+        }
+
+        #form label {
+            font-size: 1.1em;
+        }
+
+        #form input:hover{
+          border-color: #06f;
+          outline-style: none;
+        }
+
+
+        #form input:focus{
+          border: 2px solid #06f;
+          box-shadow: 0 0 5px rgba(0, 102, 255, 0.5);
+          width: 30em;
+          height: 2.5em;
+          outline-style: none;
+        }
+
+        #form input[type="text"] {
+            width: 23em;
+            height: 2.5em;
+        }
+
+        #form input[type="checkbox"] {
+            width: 2em;
+            height: 2em;
+        }
+
+        .password-container{
+            display:block
+        }
+
+        #form input[type="password"] {
+            width: 23em;
+            height: 2.5em;
+        }
+
+        #toggleButton {
+            font-size: 1.2em;
+            border: none;
+            background-color: white;
+            position: relative;
+            right:2.3em;
+            top:0.75em;
+            transform: translateY(-50%);
+        }
+
+        .b {
+            width: 12em;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        #tit {
+            font-size: 1.8em;
+        }
+
+        #boton {
+            align-items: center;
+            background-color: #06f;
+            border: 2px solid #06f;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            fill: #000;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            justify-content: center;
+            letter-spacing: -.8px;
+            line-height: 24px;
+            width: 16em;
+            outline: 0;
+            padding: 0.5em;
+            text-align: center;
+            text-decoration: none;
+            transition: all .3s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .boton:focus {
+            color: #171e29;
+        }
+
+        .boton:hover {
+            background-color: #3385ff;
+            border-color: #3385ff;
+            fill: #06f;
+        }
+
+        .boton:active {
+            background-color: #3385ff;
+            border-color: #3385ff;
+            fill: #06f;
+        }
+
+        .error-message {
+            color: blue;
+        }
+
+        .checkbox-wrapper {
+            --size: 20px;
+            position: relative;
+        }
+
+        .checkbox-wrapper *,
+        .checkbox-wrapper *:before,
+        .checkbox-wrapper *:after {
+            box-sizing: border-box;
+        }
+
+        .checkbox-wrapper .promoted-input-checkbox {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        .checkbox-wrapper input:checked ~ svg {
+            height: calc(var(--size) * 0.6);
+            -webkit-animation: draw-checkbox ease-in-out 0.2s forwards;
+            animation: draw-checkbox ease-in-out 0.2s forwards;
+        }
+
+        .checkbox-wrapper label:active::after {
+            background-color: #e6e6e6;
+        }
+
+        .checkbox-wrapper label {
+            color:black;
+            line-height: var(--size);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-wrapper label:after {
+            content: "";
+            height: var(--size);
+            width: var(--size);
+            margin-right: 8px;
+            float: left;
+            border: 2px solid #0080d3;
+            border-radius: 3px;
+            transition: 0.15s all ease-out;
+        }
+
+        .checkbox-wrapper svg {
+            stroke: #0080d3;
+            stroke-width: 3px;
+            height: 0;
+            width: calc(var(--size) * 0.6);
+            position: absolute;
+            left: calc(var(--size) * 0.21);
+            top: calc(var(--size) * 0.2);
+            stroke-dasharray: 33;
+        }
+
+        @-webkit-keyframes draw-checkbox {
+            0% {
+                stroke-dashoffset: 33;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes draw-checkbox {
+            0% {
+                stroke-dashoffset: 33;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        #papa{
+          width:2em;
+        }
+
+        .kl{
+          width:2em;
+        }
+
+        .er{
+          color:#06f;
+        }
+    </style>
+</head>
+<body>
+<div id="form">
+    <a class="i" href="../index.PHP"><img class="b " src="https://st3.idealista.com/static/common/img/idealista.svg"></a><br><br>
+    <p id="tit">Nuevo usuario</p>
+    <form action="anadiru.php" method="POST" id="myForm"><br>
+
+        <label for="email">Email de acceso</label><br>
+        <input type="text" name="correu" id="correu"><br>
+        <div id="errorEmail" class="er"></div><br>
+
+        <label for="contraseña">Contraseña</label><br>
+        <div class="password-container">
+            <input type="password" id="passwordField" name="password">
+            <button type="button" id="toggleButton" onclick="togglePassword()">👁️‍🗨️</button>
+        </div>
+        <div id="errorContra" class="er"></div>
+        <p id="p">Utiliza al menos 4 caracteres, letras y números</p>
+
+        <div class="checkbox-wrapper">
+            <input id="tmp-28" type="checkbox" class="promoted-input-checkbox"/>
+            <svg><use xlink:href="#checkmark-28" /></svg>
+            <label for="tmp-28" class="kl">
+                Aceptar la <a href="https://www.idealista.com/ayuda/articulos/politica-de-privacidad/">política de privacidad</a>
+            </label>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                <symbol id="checkmark-28" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-miterlimit="10" fill="none"  d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                    </path>
+                </symbol>
+            </svg>
+        </div>
+        <br><br>
+
+        <div class="checkbox-wrapper">
+            <input id="tmp-29" type="checkbox" class="promoted-input-checkbox"/>
+            <svg><use xlink:href="#checkmark-29" /></svg>
+            <label for="tmp-29" class="kl" id="papa">
+                Recibir información comercial
+            </label>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                <symbol id="checkmark-29" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-miterlimit="10" fill="none"  d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                    </path>
+                </symbol>
+            </svg>
+        </div>
+        <br><br>
+
+        <input type="submit" value="Ok, ¡Vamos para dentro!" id="boton">
+
+    </form>
+</div>
+
+<script>
+    function togglePassword() {
+        var password = document.getElementById('passwordField');
+        var button = document.getElementById('toggleButton');
+
+        if (password.type === 'password') {
+            password.type = 'text';
+        } else {
+            password.type = 'password';
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("myForm");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var correo = document.getElementById("correu").value;
+        var errorCorreo = document.getElementById("errorEmail");
+        var password = document.getElementById("passwordField").value;
+        var errorPassword = document.getElementById("errorContra");
+       
+        var re = /\S+@\S+\.\S+/;
+
+        if (!re.test(correo)) {
+            document.getElementById("correu").focus();
+            errorCorreo.innerHTML = "Este campo está incorrecto o incompleto";
+        } else {
+            errorCorreo.innerHTML = "";
+        }
+
+        if (password === "") {
+            document.getElementById("passwordField").focus();
+            errorPassword.innerHTML = "Rellena el campo de contraseña";
+        } else {
+            errorPassword.innerHTML = "";
+        }
+
+        if (re.test(correo) && password !== "") {
+            form.submit();
+        }
+    });
+});
+
+</script>
+</body>
+</html>
