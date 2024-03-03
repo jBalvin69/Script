@@ -1,0 +1,27 @@
+---
+- name: Install and configure Squid Proxy
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Squid Proxy
+      apt:
+        name: squid
+        state: present
+
+    - name: Copy Squid configuration file
+      template:
+        src: squid.conf.j2
+        dest: /etc/squid/squid.conf
+      notify: Restart Squid
+
+  handlers:
+    - name: Restart Squid
+      service:
+        name: squid
+        state: restarted
