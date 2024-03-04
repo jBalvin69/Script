@@ -1,0 +1,20 @@
+#!/bin/bash
+sudo apt install ansible
+sudo apt install openssh-server
+sudo apt install sshpass
+
+PLAYBOOK="squid.yml"
+USER="fermin"
+
+read -p "Ingrese la dirección IP del inventario: " INVENTORY
+
+if echo "$INVENTORY" | grep -qE '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'; then
+    echo "La dirección IP es válida."
+else
+    echo "La dirección IP no es válida. Por favor, ingrese una dirección IP válida."
+    exit 1
+fi
+
+INVENTORY="$INVENTORY,"
+
+ansible-playbook -i $INVENTORY --user=$USER --ask-pass $PLAYBOOK
