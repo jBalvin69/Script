@@ -464,7 +464,7 @@ read -p " Seleccione una opción válida: " op2
 
         read -p "Ingrese la dirección IP del inventario: " INVENTORY
 
-		if echo "$INVENTORY" | grep -E '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$' > /dev/null; then
+		
                 echo "La dirección IP es válida."
         else
                 echo "La dirección IP no es válida. Por favor, ingrese una dirección IP válida."

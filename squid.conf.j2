@@ -1,0 +1,12 @@
+# ACLs
+acl localnet src 192.168.10.0/24
+ 
+# HTTP Access
+http_access allow localnet
+http_access allow localhost
+ 
+# Squid port
+http_port 3128
+ 
+# Log file
+access_log /var/log/squid/access.log

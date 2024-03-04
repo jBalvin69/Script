@@ -1,6 +1,6 @@
 #!/bin/bash
 
-contenedores_existentes=$(docker ps -a)
+contenedores_existentes=$(sudo docker ps -a)
 
 echo ""
 echo "	CAMBIAR O AÑADIR UNA CONFIGURACIÓN DE UN CONTENEDOR"
@@ -17,7 +17,7 @@ echo ""
 read -p "Escoge un contenedor para modificar: " contenedor
 echo ""
 
-contenedor_existe=$(docker ps -a | grep "$contenedor")
+contenedor_existe=$(sudo docker ps -a | grep "$contenedor")
 echo ""
 
 while [[ $contenedor_existe = "" ]]; do
@@ -26,15 +26,15 @@ while [[ $contenedor_existe = "" ]]; do
     echo ""
     read -p "					Por favor, escoge un contenedor de la lista para modificar: " contenedor
     echo ""
-    contenedor_existe=$(docker ps -a | grep "$contenedor")
+    contenedor_existe=$(sudo docker ps -a | grep "$contenedor")
 done
 
 echo ""
 echo "								Iniciando contenedor..."
-docker start "$contenedor"
+sudo docker start "$contenedor"
 echo ""
 echo "							Contenedor iniciado, entrando en contenedor..."
 echo ""
 echo "					Para realizar los cambios, escribe './script.sh' al entrar en el contenedor"
 echo ""
-docker attach "$contenedor"
+sudo docker attach "$contenedor"

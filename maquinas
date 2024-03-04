@@ -1,2 +1,2 @@
 [paco]
-192.168.10.20 ansible_ssh_user=fermin ansible_ssh_pass=Alexraposo5
+192.168.10.20 ansible_ssh_user=nacho ansible_ssh_pass=Yeye2004
